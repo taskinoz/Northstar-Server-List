@@ -44,6 +44,14 @@
       color: #fff;
       border-radius: 20px;
     }
+    .spinner {
+      text-align: center;
+      width: 100%;
+    }
+    .spinner img {
+      display: inline-block;
+      height: 20px;
+    }
   </style>
 </head>
 <body>
@@ -53,7 +61,9 @@
         <h1>Northstar Servers</h1>
       </div>
     </div>
-    <div id="servers" class="row"></div>
+    <div id="servers" class="row">
+      <div class="spinner"><img src="/images/spinner.gif" alt="Loading"></div>
+    </div>
   </div>
 </body>
 </html>

@@ -32,19 +32,25 @@ $(document).ready(function() {
   }
 
   $.getJSON('getdata.php', (data) => {
-   data.map(x => console.log(x['name']));
-   $('#servers').append(
-     data.map(function(x){
-       return '<div class="cold-12 col-4-md server-card" style="background-image:url(/maps/'+x['map']+'.png)">\n'+
-       '<div class="info">\n'+
-       '<h2>'+x['name']+'</h2>\n'+
-       '<p>'+x['description']+'</p>\n'+
-       '<p>'+'PLayers: '+x['playerCount']+'/'+x['maxPlayers']+'</p>\n'+
-       '<p>'+getMapName(x['map'])+'</p>\n'+
-       '<p>'+'Playlist: '+x['playlist']+'</p>\n'+
-       '<\/div>\n'+
-       '<\/div>'
-     })
-   )
+    if (data!=[]){
+     data.map(x => console.log(x['name']));
+     $('#servers').append(
+       data.map(function(x){
+         return '<div class="cold-12 col-4-md server-card" style="background-image:url(/maps/'+x['map']+'.png)">\n'+
+         '<div class="info">\n'+
+         '<h2>'+x['name']+'</h2>\n'+
+         '<p>'+x['description']+'</p>\n'+
+         '<p>'+'PLayers: '+x['playerCount']+'/'+x['maxPlayers']+'</p>\n'+
+         '<p>'+getMapName(x['map'])+'</p>\n'+
+         '<p>'+'Playlist: '+x['playlist']+'</p>\n'+
+         '<\/div>\n'+
+         '<\/div>'
+       })
+     )
+   }
+   else {
+     $('#servers').append('<div class="col-12">No Servers Found</div>')
+   }
+   $('.spinner').remove();
  });
 })
