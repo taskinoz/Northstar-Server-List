@@ -1,0 +1,23 @@
+[
+  {
+    "lastHeartbeat": 1639642207338,
+    "id": "4bbc16607d5b3b7c6b3b5d6cc21318be",
+    "name": "[AUS] Servernoz",
+    "description": "Titanfall down unda",
+    "playerCount": 0,
+    "maxPlayers": 16,
+    "map": "mp_lobby",
+    "playlist": "private_match",
+    "hasPassword": false,
+    "modInfo": {
+      "Mods": [
+        {
+          "Name": "Northstar.Custom",
+          "Version": "0.0.0",
+          "RequiredOnClient": true,
+          "Pdiff": null
+        }
+      ]
+    }
+  }
+]
