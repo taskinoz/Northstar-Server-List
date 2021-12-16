@@ -35,7 +35,7 @@ $(document).ready(function() {
    data.map(x => console.log(x['name']));
    $('#servers').append(
      data.map(function(x){
-       return '<div class="col-4 server-card" style="background-image:url(/maps/'+x['map']+'.png)">\n'+
+       return '<div class="cold-12 col-4-md server-card" style="background-image:url(/maps/'+x['map']+'.png)">\n'+
        '<div class="info">\n'+
        '<h2>'+x['name']+'</h2>\n'+
        '<p>'+x['description']+'</p>\n'+
