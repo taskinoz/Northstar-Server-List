@@ -32,7 +32,7 @@ $(document).ready(function() {
   }
 
   $.getJSON('getdata.php', (data) => {
-    if (data!=[]){
+    if (data>0){
      data.map(x => console.log(x['name']));
      $('#servers').append(
        data.map(function(x){
@@ -49,7 +49,7 @@ $(document).ready(function() {
      )
    }
    else {
-     $('#servers').append('<div class="col-12">No Servers Found</div>')
+     $('#servers').append('<div class="col-12 noservers">No Servers Found</div>')
    }
    $('.spinner').remove();
  });
