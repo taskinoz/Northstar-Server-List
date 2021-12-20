@@ -32,7 +32,7 @@ $(document).ready(function() {
   }
 
   $.getJSON('getdata.php', (data) => {
-    if (data>0){
+    if (data.length>0){
      data.map(x => console.log(x['name']));
      $('#servers').append(
        data.map(function(x){
