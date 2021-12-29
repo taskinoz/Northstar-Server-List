@@ -33,24 +33,27 @@ $(document).ready(function() {
 
   $.getJSON('getdata.php', (data) => {
     if (data.length>0){
-     data.map(x => console.log(x['name']));
-     $('#servers').append(
-       data.map(function(x){
-         return '<div class="cold-12 col-4-md server-card" style="background-image:url(maps/'+x['map']+'.png)">\n'+
-         '<div class="info">\n'+
-         '<h2>'+x['name']+'</h2>\n'+
-         '<p>'+x['description']+'</p>\n'+
-         '<p>'+'PLayers: '+x['playerCount']+'/'+x['maxPlayers']+'</p>\n'+
-         '<p>'+getMapName(x['map'])+'</p>\n'+
-         '<p>'+'Playlist: '+x['playlist']+'</p>\n'+
-         '<\/div>\n'+
-         '<\/div>'
-       })
-     )
-   }
-   else {
-     $('#servers').append('<div class="col-12 noservers">No Servers Found</div>')
-   }
-   $('.spinner').remove();
- });
+      $('title').text('('+data.length+') Northstar Servers')
+      $('#available').append('<h2>Servers Avalible: '+data.length+'</h2>')
+      $('#servers').append(
+        data.map(function(x){
+          return '<div class="col-12 col-md-4 server-card">\n'+
+          '<div class="background" style="background-image:url(maps/'+x['map']+'.png)">\n'+
+          '<div class="info">\n'+
+          '<h2>'+x['name']+'</h2>\n'+
+          '<p>'+x['description']+'</p>\n'+
+          '<p>'+'PLayers: '+x['playerCount']+'/'+x['maxPlayers']+'</p>\n'+
+          '<p>'+getMapName(x['map'])+'</p>\n'+
+          '<p>'+'Playlist: '+x['playlist']+'</p>\n'+
+          '<\/div>\n'+
+          '<\/div>\n'+
+          '<\/div>'
+        })
+      )
+    }
+    else {
+      $('#servers').append('<div class="col-12 noservers">No Servers Found</div>')
+    }
+    $('.spinner').remove();
+  });
 })
