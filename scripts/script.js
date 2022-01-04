@@ -37,7 +37,7 @@ $(document).ready(function() {
       $('#available').append('<h2>Servers Avalible: '+data.length+'</h2>')
       $('#servers').append(
         data.map(function(x){
-          return '<div class="col-12 col-md-4 server-card">\n'+
+          return '<div class="col-12 col-md-6 col-lg-4 server-card">\n'+
           '<div class="background" style="background-image:url(maps/'+x['map']+'.png)">\n'+
           '<div class="info">\n'+
           '<h2>'+x['name']+'</h2>\n'+
