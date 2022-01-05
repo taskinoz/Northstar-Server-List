@@ -56,7 +56,7 @@ $(document).ready(function() {
     return maps[name]
   }
 
-  $.getJSON('getdata.php', (data) => {
+  $.getJSON('https://northstar.tf/client/servers', (data) => {
     if (data.length>0){
       $('#servers').append(
         data.map(function(x){
@@ -80,7 +80,7 @@ $(document).ready(function() {
         })
       )
       var ServersAvailable = $('#servers .server-card').length
-      $('title').text('('+ServersAvailable+') Northstar '+(ServersAvailable>1?"Servers":"Server"))
+      $('title').text('('+ServersAvailable+') Northstar '+(ServersAvailable>1 || ServersAvailable<1 ?"Servers":"Server"))
       $('#available').append('<h2>Servers Available: '+ServersAvailable+'</h2>')
     }
     else {
