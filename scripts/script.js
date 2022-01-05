@@ -1,5 +1,31 @@
 $(document).ready(function() {
 
+  var url = new URL(window.location.href);
+
+  var parameters = ["search", "map", "gamemode"];
+  var search = {};
+
+  for (let i = 0; i < parameters.length; i++) {
+      if (url.searchParams.get(parameters[i]) != null)
+          search[parameters[i]] = url.searchParams.get(parameters[i]);
+      else
+          search[parameters[i]] = "";
+
+  }
+
+  $("#search").val(search.search)
+  $('#mapselect option[value="' + search.map + '"]').attr('selected', 'selected'); console.log("Search: " + search.map);
+  $('#gamemodeselect option[value="' + search.gamemode + '"]').attr('selected', 'selected'); console.log("Search: " + search.gamemode);
+
+  function checkInSearch(search, match) {
+      if (search != "" && match.includes(search))
+          return true;
+      else if (search == "")
+          return true
+      else
+          return false
+  }
+
   function getMapName( name ) {
     var maps = {
       "mp_angel_city" : "Angel City",
@@ -26,30 +52,36 @@ $(document).ready(function() {
       "mp_lf_uma" : "UMA",
       "mp_coliseum" : "The Coliseum",
       "mp_coliseum_column" : "Pillars",
-
     }
     return maps[name]
   }
 
   $.getJSON('getdata.php', (data) => {
     if (data.length>0){
-      $('title').text('('+data.length+') Northstar Servers')
-      $('#available').append('<h2>Servers Available: '+data.length+'</h2>')
       $('#servers').append(
         data.map(function(x){
-          return '<div class="col-12 col-md-6 col-lg-4 server-card">\n'+
-          '<div class="background" style="background-image:url(maps/'+x['map']+'.png)">\n'+
-          '<div class="info">\n'+
-          '<h2>'+x['name']+'</h2>\n'+
-          '<p>'+x['description']+'</p>\n'+
-          '<p>'+'Players: '+x['playerCount']+'/'+x['maxPlayers']+'</p>\n'+
-          '<p>'+getMapName(x['map'])+'</p>\n'+
-          '<p>'+'Playlist: '+x['playlist']+'</p>\n'+
-          '<\/div>\n'+
-          '<\/div>\n'+
-          '<\/div>'
+          if ((checkInSearch(search.search, x['name']) &&
+               checkInSearch(search.map, x['map']) &&
+               checkInSearch(search.gamemode, x['playlist'])) ||
+               search.category == "" && search.location == "" && search.type == ""
+          ){
+            return '<div class="col-12 col-md-6 col-lg-4 server-card">\n'+
+            '<div class="background" style="background-image:url(maps/'+x['map']+'.png)">\n'+
+            '<div class="info">\n'+
+            '<h2>'+x['name']+'</h2>\n'+
+            '<p>'+x['description']+'</p>\n'+
+            '<p>'+'Players: '+x['playerCount']+'/'+x['maxPlayers']+'</p>\n'+
+            '<p>'+getMapName(x['map'])+'</p>\n'+
+            '<p>'+'Playlist: '+x['playlist']+'</p>\n'+
+            '<\/div>\n'+
+            '<\/div>\n'+
+            '<\/div>'
+          }
         })
       )
+      var ServersAvailable = $('#servers .server-card').length
+      $('title').text('('+ServersAvailable+') Northstar '+(ServersAvailable>1?"Servers":"Server"))
+      $('#available').append('<h2>Servers Available: '+ServersAvailable+'</h2>')
     }
     else {
       $('#servers').append('<div class="col-12 noservers">No Servers Found</div>')

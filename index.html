@@ -83,6 +83,89 @@
         <h1>Northstar Servers</h1>
       </div>
     </div>
+    <form>
+      <div class="row">
+        <div class="col-12 col-lg-4">
+          <div class="form-group">
+            <input type="text" class="form-control" name="search" id="search" placeholder="Select">
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="form-group">
+            <select id="mapselect" class="form-control" name="map">
+              <option selected value="">All</option>
+              <option value="mp_angel_city">Angel City</option>
+              <option value="mp_black_water_canal">Black Water Canal</option>
+              <option value="mp_grave">Boomtown</option>
+              <option value="mp_colony02">Colony</option>
+              <option value="mp_complex3">Complex</option>
+              <option value="mp_crashsite3">Crashsite</option>
+              <option value="mp_drydock">DryDock</option>
+              <option value="mp_eden">Eden</option>
+              <option value="mp_thaw">Exoplanet</option>
+              <option value="mp_forwardbase_kodai">Forward Base Kodai</option>
+              <option value="mp_glitch">Glitch</option>
+              <option value="mp_homestead">Homestead</option>
+              <option value="mp_relic02">Relic</option>
+              <option value="mp_rise">Rise</option>
+              <option value="mp_wargames">Wargames</option>
+              <option value="mp_lobby">Lobby</option>
+              <option value="mp_lf_deck">Deck</option>
+              <option value="mp_lf_meadow">Meadow</option>
+              <option value="mp_lf_stacks">Stacks</option>
+              <option value="mp_lf_township">Township</option>
+              <option value="mp_lf_traffic">Traffic</option>
+              <option value="mp_lf_uma">UMA</option>
+              <option value="mp_coliseum">The Coliseum</option>
+              <option value="mp_coliseum_column">Pillars</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="form-group">
+            <select id="gamemodeselect" class="form-control" name="gamemode">
+              <option selected value="">All</option>
+              <!-- NORMAL GAMEMODES -->
+              <option value="private_match">Lobby</option>
+              <!-- <option value="aitdm">Attrition</option> -->
+              <option value="tdm">Skirmish</option>
+              <option value="cp">Amped Hardpoint</option>
+              <option value="at">Bounty Hunt</option>
+              <option value="ctf">Capture the Flag</option>
+              <option value="lts">Last Titan Standing</option>
+              <option value="ps">Pilots vs. Pilots</option>
+              <option value="speedball">Live Fire</option>
+              <option value="mfd">Marked For Death</option>
+              <option value="ttdm">Titan Brawl</option>
+              <!-- <option value="fd_easy">Frontier Defense (Easy)</option>
+              <option value="fd_normal">Frontier Defense (Normal)</option>
+              <option value="fd_hard">Frontier Defense (Hard)</option>
+              <option value="fd_master">Frontier Defense (Master)</option>
+              <option value="fd_insane">Frontier Defense (Insane)</option> -->
+              <!-- CUSTOM GAMEMODES -->
+              <option value="sbox">Sandbox</option>
+              <option value="gg">Gun Game</option>
+              <option value="tt">Titan Tag</option>
+              <option value="chamber">One in the Chamber</option>
+              <option value="hidden">The Hidden</option>
+              <option value="inf">Infection</option>
+              <option value="hs">Hide and Seek</option>
+              <option value="fw">Frontier War</option>
+              <option value="kr">Amped Killrace</option>
+              <option value="fastball">Fastball</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-2">
+          <div class="form-group">
+            <div class="">
+              <button type="submit" class="btn btn-primary">Search</button>
+              <a href="./" class="btn btn-primary">Clear</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
     <div id="available" class="row"></div>
     <div id="servers" class="row">
       <div class="spinner"><img src="images/spinner.gif" alt="Loading"></div>
