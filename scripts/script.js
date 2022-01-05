@@ -34,7 +34,7 @@ $(document).ready(function() {
   $.getJSON('getdata.php', (data) => {
     if (data.length>0){
       $('title').text('('+data.length+') Northstar Servers')
-      $('#available').append('<h2>Servers Avalible: '+data.length+'</h2>')
+      $('#available').append('<h2>Servers Available: '+data.length+'</h2>')
       $('#servers').append(
         data.map(function(x){
           return '<div class="col-12 col-md-6 col-lg-4 server-card">\n'+
@@ -42,7 +42,7 @@ $(document).ready(function() {
           '<div class="info">\n'+
           '<h2>'+x['name']+'</h2>\n'+
           '<p>'+x['description']+'</p>\n'+
-          '<p>'+'PLayers: '+x['playerCount']+'/'+x['maxPlayers']+'</p>\n'+
+          '<p>'+'Players: '+x['playerCount']+'/'+x['maxPlayers']+'</p>\n'+
           '<p>'+getMapName(x['map'])+'</p>\n'+
           '<p>'+'Playlist: '+x['playlist']+'</p>\n'+
           '<\/div>\n'+
