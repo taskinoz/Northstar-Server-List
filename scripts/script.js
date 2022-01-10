@@ -56,7 +56,9 @@ $(document).ready(function() {
     return maps[name]
   }
 
-  $.getJSON('https://northstar.tf/client/servers', (data) => {
+  var allPlayers = 0;
+
+  $.getJSON('getdata.php', (data) => {
     if (data.length>0){
       $('#servers').append(
         data.map(function(x){
@@ -65,6 +67,7 @@ $(document).ready(function() {
                checkInSearch(search.gamemode, x['playlist'])) ||
                search.category == "" && search.location == "" && search.type == ""
           ){
+            allPlayers+=x['playerCount'];
             return '<div class="col-12 col-md-6 col-lg-4 server-card">\n'+
             '<div class="background" style="background-image:url(maps/'+x['map']+'.png)">\n'+
             '<div class="info">\n'+
@@ -81,7 +84,8 @@ $(document).ready(function() {
       )
       var ServersAvailable = $('#servers .server-card').length
       $('title').text('('+ServersAvailable+') Northstar '+(ServersAvailable>1 || ServersAvailable<1 ?"Servers":"Server"))
-      $('#available').append('<h2>Servers Available: '+ServersAvailable+'</h2>')
+      $('#available').append('<div class="col-12"><h2>Servers Available: '+ServersAvailable+'</h2></div>')
+      $('#available-players').append('<div class="col-12"><h2>Players: '+allPlayers+'</h2></div>')
     }
     else {
       $('#servers').append('<div class="col-12 noservers">No Servers Found</div>')
