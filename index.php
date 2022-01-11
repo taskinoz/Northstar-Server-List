@@ -81,6 +81,15 @@
     <div class="row">
       <div class="col-12">
         <h1>Northstar Servers</h1>
+        <?php
+          ob_start();
+          include("getdata.php");
+          ob_end_clean();
+
+          if ( !(strpos($url, 'northstar.tf') !== false)) {
+           echo "<p>Masterserver is down<br>Backup: ".$url."</p>";
+          }
+        ?>
       </div>
     </div>
     <form>

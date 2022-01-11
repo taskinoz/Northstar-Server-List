@@ -1,5 +1,5 @@
 <?php
-$url = 'https://northstar.tf/client/servers';
-$json = file_get_contents($url);
+$url = 'tf.excord.de';
+$json = file_get_contents("https://".$url."/client/servers");
 echo $json;
 ?>
