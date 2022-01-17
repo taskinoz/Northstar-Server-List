@@ -62,7 +62,7 @@ $(document).ready(function() {
     if (data.length>0){
       $('#servers').append(
         data.map(function(x){
-          if ((checkInSearch((search.search).toLowercase(), (x['name']).toLowercase()) &&
+          if ((checkInSearch((search.search).toLowerCase(), (x['name']).toLowerCase()) &&
                checkInSearch(search.map, x['map']) &&
                checkInSearch(search.gamemode, x['playlist'])) ||
                search.category == "" && search.location == "" && search.type == ""
