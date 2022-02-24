@@ -69,7 +69,6 @@ $(document).ready(function() {
           ){
             allPlayers+=x['playerCount'];
             cardButton = '<p><a href="northstar://server@'+x["id"]+'" class="btn btn-primary btn-northstar" data-password="'+x["hasPassword"]+'">'+(x["hasPassword"]?'<i class="fa-solid fa-lock"></i> ':'')+'Join</a></p>\n';
-            // if (allowJoinButton) {$TM_SELECTED_TEXT}
             // URI northstar://server@SERVER_ID_HERE:BASE64_ENCODED_PASSWORD
             return '<div class="col-12 col-md-6 col-lg-4 server-card">\n'+
             '<div class="background" style="background-image:url(maps/'+x['map']+'.png)">\n'+
