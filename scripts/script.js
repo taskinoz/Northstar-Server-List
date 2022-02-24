@@ -10,8 +10,11 @@ $(document).ready(function() {
           search[parameters[i]] = url.searchParams.get(parameters[i]);
       else
           search[parameters[i]] = "";
-
   }
+  if (url.searchParams.get("test")!=null) {
+    allowJoinButton = true
+  }
+
 
   $("#search").val(search.search)
   $('#mapselect option[value="' + search.map + '"]').attr('selected', 'selected'); console.log("Search: " + search.map);
