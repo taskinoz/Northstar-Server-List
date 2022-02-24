@@ -68,6 +68,9 @@ $(document).ready(function() {
                search.category == "" && search.location == "" && search.type == ""
           ){
             allPlayers+=x['playerCount'];
+            cardButton = '<p><a href="northstar://server@'+x["id"]+'" class="btn btn-primary btn-northstar" data-password="'+x["hasPassword"]+'">'+(x["hasPassword"]?'<i class="fa-solid fa-lock"></i> ':'')+'Join</a></p>\n';
+            // if (allowJoinButton) {$TM_SELECTED_TEXT}
+            // URI northstar://server@SERVER_ID_HERE:BASE64_ENCODED_PASSWORD
             return '<div class="col-12 col-md-6 col-lg-4 server-card">\n'+
             '<div class="background" style="background-image:url(maps/'+x['map']+'.png)">\n'+
             '<div class="info">\n'+
@@ -76,13 +79,14 @@ $(document).ready(function() {
             '<p>'+'Players: '+x['playerCount']+'/'+x['maxPlayers']+'</p>\n'+
             '<p>'+getMapName(x['map'])+'</p>\n'+
             '<p>'+'Playlist: '+x['playlist']+'</p>\n'+
+            (allowJoinButton?cardButton:"")+
             '<\/div>\n'+
             '<\/div>\n'+
             '<\/div>'
           }
         })
       )
-      var ServersAvailable = $('#servers .server-card').length
+      var ServersAvailable = $('#servers .server-card').length;
       $('title').text('('+ServersAvailable+') Northstar '+(ServersAvailable>1 || ServersAvailable<1 ?"Servers":"Server"))
       $('#available').append('<div class="col-12"><h2>Servers Available: '+ServersAvailable+'</h2></div>')
       $('#available-players').append('<div class="col-12"><h2>Players: '+allPlayers+'</h2></div>')
@@ -92,4 +96,10 @@ $(document).ready(function() {
     }
     $('.spinner').remove();
   });
+
+  $(document).on('click','a[data-password="true"]', function(e) {
+    e.preventDefault();
+    var password = prompt("Enter Password:");
+    window.location.href = $(this).attr('href')+":"+btoa(password);
+  })
 })

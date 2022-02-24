@@ -1,3 +1,6 @@
+<?php
+  $allowJoin = "false";
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +11,10 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script type="text/javascript">
+    var allowJoinButton = <?php echo $allowJoin; ?>;
+  </script>
   <script src="scripts/script.js" charset="utf-8"></script>
   <style media="screen">
     h1{
@@ -69,11 +76,23 @@
       justify-content: center;
       align-items: center;
     }
-	@media screen and (max-width:545px) {
-	  .noservers {
-		height: 60vh;
-	  }
-	}
+    .btn-northstar {
+      border-radius: 10px;
+      background: rgba(33, 43, 78, 0.9);
+      border-color: rgba(33, 43, 78, 0.9);
+    }
+    .server-card .btn-northstar {
+      width: 100%;
+    }
+  	@media screen and (max-width:545px) {
+  	  .noservers {
+    		height: 60vh;
+  	  }
+      /* simple show none on mobile */
+      a.btn-northstar {
+        display: none;
+      }
+  	}
   </style>
 </head>
 <body>
@@ -136,7 +155,7 @@
               <option selected value="">All</option>
               <!-- NORMAL GAMEMODES -->
               <option value="private_match">Lobby</option>
-              <!-- <option value="aitdm">Attrition</option> -->
+              <option value="aitdm">Attrition</option>
               <option value="tdm">Skirmish</option>
               <option value="cp">Amped Hardpoint</option>
               <option value="at">Bounty Hunt</option>
@@ -146,11 +165,11 @@
               <option value="speedball">Live Fire</option>
               <option value="mfd">Marked For Death</option>
               <option value="ttdm">Titan Brawl</option>
-              <!-- <option value="fd_easy">Frontier Defense (Easy)</option>
+              <option value="fd_easy">Frontier Defense (Easy)</option>
               <option value="fd_normal">Frontier Defense (Normal)</option>
               <option value="fd_hard">Frontier Defense (Hard)</option>
               <option value="fd_master">Frontier Defense (Master)</option>
-              <option value="fd_insane">Frontier Defense (Insane)</option> -->
+              <option value="fd_insane">Frontier Defense (Insane)</option>
               <!-- CUSTOM GAMEMODES -->
               <option value="sbox">Sandbox</option>
               <option value="gg">Gun Game</option>
@@ -168,8 +187,8 @@
         <div class="col-12 col-md-6 col-lg-2">
           <div class="form-group">
             <div class="">
-              <button type="submit" class="btn btn-primary">Search</button>
-              <a href="./" class="btn btn-primary">Clear</a>
+              <button type="submit" class="btn btn-primary btn-northstar">Search</button>
+              <a href="./" class="btn btn-primary btn-northstar">Clear</a>
             </div>
           </div>
         </div>
